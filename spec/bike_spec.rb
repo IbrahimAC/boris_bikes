@@ -1,4 +1,4 @@
-require 'bike'
+require 'DockingStation'
 
 describe Bike do 
    bike = Bike.new

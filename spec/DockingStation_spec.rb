@@ -10,4 +10,10 @@ describe DockingStation do
     expect(docking_station.release_bike).to be_instance_of(Bike) # same as obj.should be_instance_of(type)
   end
 
+  it "expects true if bike is working" do
+    docking_station = DockingStation.new
+    bike = docking_station.release_bike
+    expect(bike.working?).to eq true # fails with "expected true, got false (using ==)"
+  end
+
 end
