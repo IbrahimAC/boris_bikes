@@ -8,8 +8,10 @@ describe DockingStation do
   end
   it "expects release_bike to 'get a bike' meaning create a instance of one" do
     docking_station = DockingStation.new
-    
+    bike = Bike.new
+    docking_station.bike_docking(bike)
     expect(docking_station.release_bike).to be_instance_of(Bike) # same as obj.should be_instance_of(type)
+    expect(docking_station.release_bike).to eq bike
   end
 
   it "expects true if bike is working" do
@@ -32,4 +34,12 @@ describe DockingStation do
     # with the bike instance of an atrribute of it 
 
   end
+
+  it 'raises error when no bikes' do
+    docking_station = DockingStation.new
+    bike = docking_station.release_bike
+    previous_length = docking_station.bike_rack.length
+    docking_station.bike_docking(bike)
+    expect(docking_station.bike_rack).to raise_error "There are no bikes left."
+  end  
 end
